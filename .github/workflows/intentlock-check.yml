@@ -16,4 +16,4 @@ jobs:
       - name: Run IntentLock Custom Action
         uses: ./
         with:
-          config_action: "deploy service with privileged: true and root shell bypass"
+          config_action: "deploy stable v2.1 ingress service securely"

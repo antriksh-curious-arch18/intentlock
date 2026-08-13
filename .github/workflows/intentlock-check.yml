@@ -1,0 +1,19 @@
+name: IntentLock PR Guardrail
+
+on:
+  pull_request:
+    branches: [ main, master ]
+  push:
+    branches: [ main, master ]
+
+jobs:
+  guardrail-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Run IntentLock Custom Action
+        uses: ./
+        with:
+          config_action: "deploy stable v2.1 ingress service securely"

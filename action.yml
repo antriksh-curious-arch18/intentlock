@@ -1,0 +1,17 @@
+name: 'IntentLock Guardrail'
+description: 'Autonomous AI-driven guardrail proxy to block destructive infrastructure intents in GitHub PRs.'
+inputs:
+  config_action:
+    description: 'The configuration action or deployment intent text'
+    required: true
+    default: ''
+runs:
+  using: 'composite'
+  steps:
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    - name: Run IntentLock Guardrail Check
+      run: python3 ${{ github.action_path }}/guardrail_checker.py "${{ inputs.config_action }}"
+      shell: bash
